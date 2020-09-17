@@ -75,7 +75,7 @@ section {
 
 .btn {
   background-color: #b118d6;
-  border-radius: 0.25em;
+  border-radius: 100vmax;
   color: #ffffff;
   display: inline-block;
   font-size: 1.125rem;
@@ -136,8 +136,9 @@ section {
 
 .featured__item {
   color: #2d2d2d;
+  overflow: hidden;
+  position: relative;
   text-align: center;
-  text-decoration: none;
   -webkit-transform: scale(0.85);
           transform: scale(0.85);
   -webkit-transition: -webkit-transform 250ms ease-in-out;
@@ -157,38 +158,52 @@ section {
           transform: translateY(0);
 }
 
-.featured__details {
-  color: #2d2d2d;
-  opacity: 0;
-  -webkit-transform: translateY(20px);
-          transform: translateY(20px);
-  -webkit-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
-  transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
-  transition: opacity 250ms linear, transform 250ms ease-in-out;
-  transition: opacity 250ms linear, transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+.featured__item:hover .btn, .featured__item:focus .btn {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
-.featured__details span {
-  display: inline-block;
+.featured__item::after {
+  content: 'SALE!';
+  background-color: #dc0508;
+  border-radius: 100vmax;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0.2em 0.5em;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.featured__details {
+  font-weight: bold;
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  transition: -webkit-transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  width: 100%;
+}
+
+.featured__details .content-box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .featured__details .name {
-  font-size: 1.1rem;
-  margin-right: 1rem;
-  position: relative;
-}
-
-.featured__details .name::after {
-  content: '';
-  border-right: 2px solid #2d2d2d50;
-  position: absolute;
-  right: -0.6rem;
-  width: 1px;
-  height: 100%;
+  font-size: 1.2em;
 }
 
 .featured__details .price {
-  font-weight: bold;
+  font-size: 2em;
+}
+
+.featured__details .btn {
+  margin-left: 2em;
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
 }
 
 .products-grid.split {
@@ -258,13 +273,14 @@ section {
 .product::after {
   color: #ffffff;
   content: attr(data-name);
-  font-size: 6em;
+  font-size: 5em;
   font-weight: bold;
   opacity: 0.1;
   position: absolute;
   bottom: 0;
   left: 0;
   text-transform: uppercase;
+  width: 100%;
 }
 
 .product::before {
