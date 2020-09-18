@@ -4,15 +4,35 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;700&display=swap"
             rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;700&display=swap"
         />
-        <link href="styles.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <header class="hero">
+        <header id="home">
+            <nav class="navbar">
+                <div class="container flex-center">
+                    <a href="#" class="logo">logo</a>
+                    <div class="menu">
+                        <ul class="navlinks flex-center hide">
+                            <li><a href="#home" class="navlink">home</a></li>
+                            <li>
+                                <a href="#products" class="navlink">shop</a>
+                            </li>
+                            <li><a href="#" class="navlink">contact</a></li>
+                            <li><a href="#" class="navlink">cart</a></li>
+                        </ul>
+                        <i class="fa fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
             <div class="overlay"></div>
-            <div class="container spacing">
+            <div class="hero container spacing flex-center">
                 <h1 class="primary-title">Style up while staying safe</h1>
                 <p>
                     Browse our superior collection of trendy yet protective face
@@ -171,5 +191,22 @@
                 </div>
             </section>
         </main>
+        <script>
+            const menuBtn = document.querySelector('.menu i');
+            const navLinks = document.querySelector('.menu .navlinks');
+
+            menuBtn.addEventListener('click', () =>
+                navLinks.classList.toggle('hide')
+            );
+
+            window.addEventListener('resize', toggleNavLinks);
+
+            window.onload = () => toggleNavLinks();
+
+            function toggleNavLinks() {
+                if (window.innerWidth > 768) navLinks.classList.remove('hide');
+                else navLinks.classList.add('hide');
+            }
+        </script>
     </body>
 </html>
